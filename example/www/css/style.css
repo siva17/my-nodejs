@@ -1,0 +1,121 @@
+ul {
+ 	list-style-type: none;
+ 	-webkit-margin-before: 0px;
+	-webkit-margin-after: 0px;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 0px;
+}
+
+.contentCls {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.responseCls {
+	float: right;
+	width: 78%;
+    top:0;
+}
+.menuWrapCls {
+	float: left;
+	width: 20%;
+	margin: 10px;
+	border: 2px solid #777;
+	border-radius: 10px;
+}
+.menuCls {
+	width: 100%;
+}
+
+.menuCls ul {
+	color: white;
+	margin: 0px;
+	padding: 0px;
+}
+.menuCls ul li {
+	background-color: #777;
+	border-top: 2px solid #BBB;
+	border-bottom: 1px solid white;
+	padding: 4px 2px 4px 8px;
+	font-weight: bold;
+}
+.menuCls ul li span {
+	color:#777;
+	float:right;
+	padding-right: 5px;
+}
+.menuCls ul li:first-child {
+	border-top: 0px solid #BBB;
+}
+.menuCls ul li:last-child {
+	border-bottom: 0px solid #BBB;
+}
+
+.menuCls ul li:hover {
+	background-color: #AAA;
+}
+.menuCls ul li:active {
+	background-color: #3276b1;
+	border-top: 2px solid white;
+}
+
+.jsonDataOutputCls {
+	width: 98%;
+	margin: 1%;
+	border: 2px solid #3276b1;
+	border-radius: 10px;
+}
+
+.jsonParsedResultCls {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	border-radius: 0px;
+ }
+
+.jsonParsedTitleCls {
+	width: 100%;
+	margin: 0;
+	padding: 10px;
+	background-color: #3276b1;
+	color:white;
+ }
+
+.jsonParsedDataCls {
+ 	background-color: white;
+ 	color: black;
+ }
+
+.jsonRawDataCls {
+ 	padding: 20px;
+ 	background-color: #DDD;
+ }
+
+.jsonParsedDataCls ul {
+ 	border-top: 1px solid black;
+ 	border-bottom: 1px solid black;
+	-webkit-padding-start: 10px;
+}
+
+.jsonParsedDataCls li {
+ 	padding: 0px;
+ 	border-left: 1px solid black;
+}
+
+.jsonParsedResultCls:last-child .jsonRawDataCls {
+	border-radius: 0px 0px 10px 10px;
+}
+
+.jsonParseKeyCls {
+	margin-left: 5px;
+	font-weight: bold;
+	color: red;
+}
+
+.jsonParseValueCls {
+	margin: 0px;
+}

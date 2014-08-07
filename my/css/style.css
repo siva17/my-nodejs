@@ -1,0 +1,12 @@
+
+.btn {
+	margin: 10px;
+}
+
+.logContentCls {
+    width: 98%;
+	margin: 1%;
+	padding: 1%;
+    border: 2px solid green;
+    border-radius: 10px;
+}

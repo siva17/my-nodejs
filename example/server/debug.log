@@ -1,6 +1,0 @@
-{"level":"data","message":"APP MODE: Fast","timestamp":"2014-08-07T16:17:57.263Z"}
-{"level":"data","message":"LOGMODE: INFO IS ENABLED","timestamp":"2014-08-07T16:17:57.264Z"}
-{"level":"data","message":"LOGMODE: WARN IS ENABLED","timestamp":"2014-08-07T16:17:57.264Z"}
-{"level":"data","message":"LOGMODE: ERROR AND EXCEPTION ARE ENABLED","timestamp":"2014-08-07T16:17:57.264Z"}
-{"level":"info","message":"Config:{\"serverPort\":8000,\"appMode\":\"fast\",\"baseUrl\":\"\",\"log\":{\"level\":15,\"fileName\":\"debug.log\",\"exceptionFileName\":\"exceptions.log\"}}","timestamp":"2014-08-07T16:17:57.268Z"}
-{"level":"data","message":"SERVICES ARE LISTENING ON PORT: 8000","timestamp":"2014-08-07T16:17:57.272Z"}

@@ -1,3 +1,4 @@
+var mySrvHost = "http://localhost";
 var mySrvPort = 8000;
 
 var MY_LOGMODE_NONE     = 0,
@@ -28,7 +29,8 @@ var myExpress    = require('express');
     mySys        = require('sys');
     myPath       = require('path');
     myBodyParser = require('body-parser'),
-    winston      = require('winston');
+    winston      = require('winston'),
+    myOpen       = require('open');
 
 var myUserCmds   = {};
 var myConfig     = {};
@@ -116,6 +118,7 @@ function preInit() {
         console.error("ERROR: NO CONFIG FILE FOUND: SHOULD PRESENT at "+myUserCmds["serverPath"]+"config.js");
     }
 
+    mySrvHost = myUserCmds["host"] || myConfig.serverHost || mySrvHost;
     mySrvPort = myUserCmds["port"] || myConfig.serverPort || mySrvPort;
 
     var logFileName = "debug.log";
@@ -190,6 +193,9 @@ function myAddListOfServices(listOfServices) {
 function myStartServer() {
     myApp.listen(mySrvPort);
     myLogImpData("SERVICES ARE LISTENING ON PORT: "+mySrvPort);
+    var urlToOpen = mySrvHost + ":" + mySrvPort + "/";
+    myLogImpData("OPENED URL: "+urlToOpen);
+    myOpen(urlToOpen);
 }
 
 function myGetFileName(filePath, fileName, callback, param1) {

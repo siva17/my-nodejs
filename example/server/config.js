@@ -1,7 +1,8 @@
 // Put all Config parameters here under module.exports and access then using MY.config
 module.exports = {
 
-	serverPort : 8000,
+	serverHost : "http://localhost",
+	serverPort : 8888,
 
 	appMode : "fast", // "fast" or "slow"
 

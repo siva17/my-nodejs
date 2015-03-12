@@ -228,7 +228,13 @@ function mySendData(response, data, delay, param1) {
 
 myApp.use(function(req,res,next) {
     myLogInfo("GOT["+req.method+"]: "+req.url);
-    next();
+    if(myConfig.delayEveryRequest) {
+        setTimeout(function(){
+            next();
+        },myConfig.delayEveryRequest);
+    } else {
+        next();
+    }
 });
 
 module.exports = {          

@@ -5,6 +5,8 @@ module.exports = {
 	serverPort : 8888,
 
 	appMode : "fast", // "fast" or "slow"
+	
+	delayEveryRequest : 0, // Value in milliseconds
 
 	baseUrl : "",
 

@@ -25,12 +25,13 @@ var myTimeDelayMins_01_30 = 0;
 var myTimeDelayMins_02_00 = 0;
 
 // Import required modules
-var myExpress    = require('express');
-    mySys        = require('sys');
-    myPath       = require('path');
+var myExpress    = require('express'),
+    mySys        = require('sys'),
+    myPath       = require('path'),
     myBodyParser = require('body-parser'),
     winston      = require('winston'),
-    myOpen       = require('open');
+    myOpen       = require('open'),
+    myHTTP       = require('http');
 
 var myUserCmds   = {};
 var myConfig     = {};
@@ -180,22 +181,32 @@ var myApp = myExpress();
 myApp.use(myExpress.static( myPath.join(__dirname, '../') )); // Indiciating and that can use lot js/css/images and other folders inside MY module
 myApp.use(myBodyParser());
 
-function myAddClientPath(basePath, clientPath) {
+function myAddClientPath(basePath) {
+    var clientPath = myUserCmds["app"] || myConfig.www || '../www';
     myApp.use(myExpress.static(myPath.join(basePath,clientPath)));
 }
 function myAddListOfServices(listOfServices) {
     var listOfServicesLen = listOfServices.length;
     for (var i = 0; i < listOfServicesLen; i++) {
         serviceItem = listOfServices[i];
-        myApp[serviceItem.type](serviceItem.url, serviceItem.cb);
+        if(typeof serviceItem.type != "string") {
+            var typeList = serviceItem.type.length;
+            for(var j = 0; j < typeList; j++) {
+                myApp[serviceItem.type[j]](serviceItem.url, serviceItem.cb);
+            };
+        } else {
+            myApp[serviceItem.type](serviceItem.url, serviceItem.cb);
+        }
     }
 }
 function myStartServer() {
     myApp.listen(mySrvPort);
     myLogImpData("SERVICES ARE LISTENING ON PORT: "+mySrvPort);
-    var urlToOpen = mySrvHost + ":" + mySrvPort + "/";
-    myLogImpData("OPENED URL: "+urlToOpen);
-    myOpen(urlToOpen);
+    var urlToOpen = mySrvHost+":"+mySrvPort+"/";
+    myLogImpData("OPENING URL: "+urlToOpen);
+    if(myConfig.openUrl) {
+        myOpen(urlToOpen);
+    }
 }
 
 function myGetFileName(filePath, fileName, callback, param1) {
@@ -226,18 +237,47 @@ function mySendData(response, data, delay, param1) {
     setTimeout(function(){response[((typeof param1 === "boolean")?("jsonp"):("send"))](data);},delay);
 }
 
+function getScripts (data) {
+    var scripts = [];
+    data.replace(/<script[^>]*>((.|\r|\n)*?)<\/script>/gim, function (a,b) {
+        scripts.push(b);
+    });
+    return scripts.join('\n');
+};
+
+function myGetFileFromUrl(response,url) {
+    var req = myHTTP.get(url, function(res) {
+        var dataFromSerer = "";
+        res.setEncoding('utf8');
+        res.on('data', function(data) {
+            dataFromSerer += data;
+        });
+        res.on('end', function() {
+            response.write(getScripts(dataFromSerer));
+            response.end();
+        });
+    }).on('error', function(e) {
+        response.send({statue:false,data:"Error"});
+    });
+    req.end();
+}
+
 myApp.use(function(req,res,next) {
     myLogInfo("GOT["+req.method+"]: "+req.url);
-    if(myConfig.delayEveryRequest) {
+    if(myConfig.CORS) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        myLogInfo("CORS ENABLED");
+    } else if(myConfig.delayEveryRequest) {
         setTimeout(function(){
             next();
         },myConfig.delayEveryRequest);
-    } else {
-        next();
+	return;
     }
+    next();
 });
 
-module.exports = {          
+var myNode = {          
 	app                 : myApp,
     express             : myExpress,
     sys                 : mySys,
@@ -260,6 +300,7 @@ module.exports = {
     startServer         : myStartServer,
     sendFile            : mySendFile,
     sendData            : mySendData,
+    getFileFromUrl      : myGetFileFromUrl,
 
     timeDelaySecs_01    :   myTimeDelaySecs_01,
     timeDelaySecs_05    :   myTimeDelaySecs_05,
@@ -276,3 +317,5 @@ module.exports = {
     timeDelayMins_01_30 :   myTimeDelayMins_01_30,
     timeDelayMins_02_00 :   myTimeDelayMins_02_00,
 };
+
+module.exports = myNode;

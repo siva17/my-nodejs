@@ -1,16 +1,25 @@
 var myNode = require('my-nodejs');
-global.my = global.MY = myNode;
 
 // Import Handlers
 var auth = require('./services/auth');
 var home = require('./services/home');
 
-myNode.addClientPath(__dirname, '../www');
+function getProfile(req,res) {
+    var srvUrl = req.param("req");
+    srvUrl = ((srvUrl)?(srvUrl):("http://localhost:9000/index.html"))
+    myNode.getFileFromUrl(res,srvUrl);
+}
+
+myNode.addClientPath(__dirname);
 
 myNode.addListOfServices([{
     type: "get",
-    url : '/test',
+    url : myNode.config.baseUrl+'/test',
     cb  : function(request, response){response.send({"test":"Test"});}
+},{
+    type: ["get","post"],
+    url : myNode.config.baseUrl+'/getProfile',
+    cb  : getProfile
 },{
     type: "get",
     url : MY.config.baseUrl+'/login/username/:username/password/:password',
@@ -33,6 +42,6 @@ myNode.addListOfServices([{
     cb  : home.search
 }]);
 
-MY.logInfo("Config:"+JSON.stringify(MY.config));
+myNode.logInfo("Config:"+JSON.stringify(myNode.config));
 
 myNode.startServer();

@@ -1,4 +1,4 @@
-// Put all Config parameters here under module.exports and access then using MY.config
+// Put all Config parameters here under module.exports and access then using require('my-nodejs').config
 module.exports = {
 
 	serverHost : "http://localhost",
@@ -9,6 +9,11 @@ module.exports = {
 	delayEveryRequest : 0, // Value in milliseconds
 
 	baseUrl : "",
+
+	www : "../www",
+
+	CORS : false,
+	openUrl : true,
 
 	log : {
 		/*

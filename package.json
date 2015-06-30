@@ -1,6 +1,6 @@
 {
   "name": "my-nodejs",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "A small library providing utility methods to have wrapper on top of express and winston logger",
   "main": "srv/my.js",
   "scripts": {
@@ -15,11 +15,7 @@
     "my-nodejs",
     "express"
   ],
-  "author": {
-    "name": "Siva R",
-    "email": "siva@siva4u.com",
-    "url": "http://www.siva4u.com/"
-  },
+  "author": "Siva R <siva@siva4u.com> (http://www.siva4u.com/)",
   "licenses": [
     {
       "type": "MIT",
@@ -32,6 +28,7 @@
   "dependencies": {
     "express": ">=3.x",
     "body-parser": ">=1",
+    "open": ">=0.0.5",
     "winston": ">=0.7.3"
   },
   "devDependencies": {
@@ -40,12 +37,11 @@
     "path": "*"
   },
   "homepage": "http://none",
-  "_id": "my-nodejs@0.1.1",
   "_from": "my-nodejs@",
-  "_resolved": "https://registry.npmjs.org/my-nodejs/-/my-nodejs-0.1.1.tgz",
+  "_resolved": "https://registry.npmjs.org/my-nodejs/-/my-nodejs-0.1.0.tgz",
   "dist": {
     "shasum": "76d06c7ca0a2ef0b244af18674cc913f4ebe8ff3",
-    "tarball": "http://registry.npmjs.org/my-nodejs/-/my-nodejs-0.1.1.tgz"
+    "tarball": "http://registry.npmjs.org/my-nodejs/-/my-nodejs-0.1.0.tgz"
   },
   "_npmVersion": "1.4.3",
   "_npmUser": {
@@ -53,12 +49,11 @@
     "email": "siva@siva4u.com"
   },
   "maintainers": [
-    {
-      "name": "siva17",
-      "email": "siva@siva4u.com"
-    }
+    "siva17 <siva@siva4u.com>"
   ],
-  "directories": {},
+  "directories": {
+    "example": "example"
+  },
   "_shasum": "76d06c7ca0a2ef0b244af18674cc913f4ebe8ff3",
-  "readme": "ERROR: No README data found!"
+  "license": "ISC"
 }

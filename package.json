@@ -1,6 +1,6 @@
 {
   "name": "my-nodejs",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "A small library providing utility methods to have wrapper on top of express and winston logger",
   "main": "srv/my.js",
   "scripts": {

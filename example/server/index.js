@@ -22,23 +22,23 @@ myNode.addListOfServices([{
     cb  : getProfile
 },{
     type: "get",
-    url : MY.config.baseUrl+'/login/username/:username/password/:password',
+    url : myNode.config.baseUrl+'/login/username/:username/password/:password',
     cb  : auth.login
 },{
     type: "get",
-    url : MY.config.baseUrl+'/signup/username/:username/password/:password/firstname/:firstname',
+    url : myNode.config.baseUrl+'/signup/username/:username/password/:password/firstname/:firstname',
     cb  : auth.signup
 },{
     type: "get",
-    url : MY.config.baseUrl+'/home/location/:listLocation',
+    url : myNode.config.baseUrl+'/home/location/:listLocation',
     cb  : home.list
 },{
     type: "get",
-    url : MY.config.baseUrl+'/listing/listingId/:listingId',
+    url : myNode.config.baseUrl+'/listing/listingId/:listingId',
     cb  : home.listDetails
 },{
     type: "get",
-    url : MY.config.baseUrl+'/search/keyword/:keyword',
+    url : myNode.config.baseUrl+'/search/keyword/:keyword',
     cb  : home.search
 }]);
 

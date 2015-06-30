@@ -179,7 +179,8 @@ preInit();
 
 var myApp = myExpress();
 myApp.use(myExpress.static( myPath.join(__dirname, '../') )); // Indiciating and that can use lot js/css/images and other folders inside MY module
-myApp.use(myBodyParser());
+myApp.use(myBodyParser.urlencoded({extended: true}));
+myApp.use(myBodyParser.json());
 
 function myAddClientPath(basePath) {
     var clientPath = myUserCmds["app"] || myConfig.www || '../www';

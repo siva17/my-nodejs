@@ -10,7 +10,7 @@ module.exports = {
 
 	baseUrl : "",
 
-	www : "../www",
+	www : "www",
 
 	CORS : false,
 	openUrl : true,

@@ -183,7 +183,7 @@ myApp.use(myBodyParser.urlencoded({extended: true}));
 myApp.use(myBodyParser.json());
 
 function myAddClientPath(basePath) {
-    var clientPath = myUserCmds["app"] || myConfig.www || '../www';
+    var clientPath = '../'+myUserCmds["app"] || '../'+myConfig.www || '../www';
     myApp.use(myExpress.static(myPath.join(basePath,clientPath)));
 }
 function myAddListOfServices(listOfServices) {

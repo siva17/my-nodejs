@@ -38,12 +38,12 @@
   },
   "homepage": "http://none",
   "_from": "my-nodejs@",
-  "_resolved": "https://registry.npmjs.org/my-nodejs/-/my-nodejs-0.1.0.tgz",
+  "_resolved": "https://registry.npmjs.org/my-nodejs/-/my-nodejs-1.0.0.tgz",
   "dist": {
     "shasum": "76d06c7ca0a2ef0b244af18674cc913f4ebe8ff3",
-    "tarball": "http://registry.npmjs.org/my-nodejs/-/my-nodejs-0.1.0.tgz"
+    "tarball": "http://registry.npmjs.org/my-nodejs/-/my-nodejs-1.0.0.tgz"
   },
-  "_npmVersion": "1.4.3",
+  "_npmVersion": "4.1.1",
   "_npmUser": {
     "name": "siva17",
     "email": "siva@siva4u.com"

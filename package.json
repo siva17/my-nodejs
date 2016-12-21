@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "connect": "*",
-    "sys": "*",
+    "util": "*",
     "path": "*"
   },
   "homepage": "http://none",

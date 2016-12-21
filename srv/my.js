@@ -26,7 +26,7 @@ var myTimeDelayMins_02_00 = 0;
 
 // Import required modules
 var myExpress    = require('express'),
-    mySys        = require('sys'),
+    mySys        = require('util'),
     myPath       = require('path'),
     myBodyParser = require('body-parser'),
     winston      = require('winston'),
@@ -183,7 +183,7 @@ myApp.use(myBodyParser.urlencoded({extended: true}));
 myApp.use(myBodyParser.json());
 
 function myAddClientPath(basePath) {
-    var clientPath = '../'+myUserCmds["app"] || '../'+myConfig.www || '../www';
+    var clientPath = 'myUserCmds["app"] || myConfig.www || 'www';
     myApp.use(myExpress.static(myPath.join(basePath,clientPath)));
 }
 function myAddListOfServices(listOfServices) {
